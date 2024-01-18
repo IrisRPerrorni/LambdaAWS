@@ -1,127 +1,101 @@
-# HelloWord
+# Lambda AWS java e API Gateway
 
-This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
+Esse projeto foi executado a fim de estudar sobre AWS lambda e API Gateway em java utilizando o Intellij o plugin AWS toolkit:
 
-- HelloWorldFunction/src/main - Code for the application's Lambda function.
-- events - Invocation events that you can use to invoke the function.
-- HelloWorldFunction/src/test - Unit tests for the application code. 
-- template.yaml - A template that defines the application's AWS resources.
+- HelloWorldFunction/src/main - Código para a função Lambda da aplicação.
+- events - ventos de invocação que você pode usar para chamar a função.. 
+- template.yaml -Um modelo que define os recursos AWS da aplicação.
 
-The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
-If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.  
-The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
+## Ferramentas para a aplicação
+- LocalStack — https://localstack.cloud/
+- AWS CLI — https://aws.amazon.com/pt/cli/
+- SAM CLI — https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
+- Java 11 — https://adoptium.net/
+- Maven — https://maven.apache.org/install.html
+- Docker — https://hub.docker.com/search/?type=edition&offering=community
+- IntelliJ — https://www.jetbrains.com/pt-br/idea/
+- AWS Toolkit — https://plugins.jetbrains.com/plugin/11349-aws-toolkit
 
-* [CLion](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [GoLand](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [IntelliJ](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [WebStorm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [Rider](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [PhpStorm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [PyCharm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [RubyMine](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [DataGrip](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
-* [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
-* [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
-
-## Deploy the sample application
-
-The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
-
-To use the SAM CLI, you need the following tools.
-
-* SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* Java11 - [Install the Java 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
-* Maven - [Install Maven](https://maven.apache.org/install.html)
-* Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
-
-To build and deploy your application for the first time, run the following in your shell:
+ - OBS:  nesse repositorio tem o passo a passo opara instalar o localstack na sua máquina :
 
 ```bash
-sam build
-sam deploy --guided
+ https://github.com/IrisRPerrorni/StudyDocker
 ```
 
-The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
+## Passo a passo para fazer essa aplicação rodar no localstack
+### 1) Ter o AWS CLI instalado
+Caso queira conferir se tem o aws instalado na sua máquina usar o seguinte comando no seu terminal :
+```bash
+aws --version
+```
+### 2) Ter o AWS CLI instalado
+Caso queira conferir se tem o aws instalado na sua máquina usar o seguinte comando no seu terminal :
+```bash
+sam --version
+```
+### 3) Instalar o plugin da AWS no Intellij
+Vai em file -> setting -> plugins 
+e procura aws:
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/a0b61e20-9494-4002-b6dc-bcfe23948ce4)
 
-* **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
-* **AWS Region**: The AWS region you want to deploy your app to.
-* **Confirm changes before deploy**: If set to yes, any change sets will be shown to you before execution for manual review. If set to no, the AWS SAM CLI will automatically deploy application changes.
-* **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
-* **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
+### 4) Configurar o AWS SAM 
+Vai em file -> setting -> AWS 
+Normalmente ele ja vai está automaticamente o caminho do AWS SAM na aba SAM CLI executable, caso não estiver coloque o caminho do seu sam cli
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/f3114af3-331f-4473-9408-6cd27fca50d2)
 
-You can find your API Gateway Endpoint URL in the output values displayed after deployment.
+### 5) Criar um projeto em java AWS lambda e colocar as dependências 
+Codigo nesse repositório
 
-## Use the SAM CLI to build and test locally
+### 6) Configurar a aplicação para executar o AWS lambda
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/1eeb1a51-e705-4c85-b91a-bb9fcc58fd46)
 
-Build your application with the `sam build` command.
+visualizando a resposta da execução: 
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/4ca2024b-ae4e-47db-bd90-d8b913e29cb8)
+
+## 7) Executar a aplicação: 
+- Inserir IAM Role para a execução da lambda:
+```bash
+aws --endpoint http://localhost:4566 --profile localstack iam create-role --role-name lambda-execution --assume-role-policy-document "{\"Version\": \"2012-10-17\",\"Statement\": [{ \"Effect\": \"Allow\", \"Principal\": {\"Service\": \"lambda.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}"
+```
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/b81f8e52-5a80-47a2-a889-9a397eadfc61)
+
+- Com a IAM Role criada, vamos incluir a policy de execução:
+```bash
+aws --endpoint http://localhost:4566 --profile localstack iam attach-role-policy --role-name lambda-execution --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+```
+- Entrar no diretório onde está a sua função:
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/6084e4d0-4e19-447b-bfb5-6bce3c20755f)
+
+- Para a implantação no LocalStack, devemos gerar o pacote que contém o código do Lambda, executando o seguinte comando:
+e executar o seguinte comando:
 
 ```bash
-HelloWord$ sam build
+mvn clean install -DskipTests
 ```
-
-The SAM CLI installs dependencies defined in `HelloWorldFunction/pom.xml`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
-
-Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
-
-Run functions locally and invoke them with the `sam local invoke` command.
+- Efetando a implantação do Lambda no LocalStack :
+entrar na pasta target e jogar o comando: 
 
 ```bash
-HelloWord$ sam local invoke HelloWorldFunction --event events/event.json
+aws --endpoint http://localhost:4566 --profile localstack lambda create-function --function-name HelloWorld --zip-file fileb://HelloWorld-1.0.jar --handler helloworld.App --runtime java11 --role arn:aws:iam::000000000000:role/lambda-execution
 ```
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/90406994-3e4f-4e64-9f70-75a8d07baaba)
 
-The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
-
+- Executando o Lambda e verificando se foi instalado corretamente:
 ```bash
-HelloWord$ sam local start-api
-HelloWord$ curl http://localhost:3000/
+aws --endpoint http://localhost:4566 --profile localstack lambda invoke --function-name HelloWorld out.txt --log-type Tail
 ```
-
-The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
-
-```yaml
-      Events:
-        HelloWorld:
-          Type: Api
-          Properties:
-            Path: /hello
-            Method: get
-```
-
-## Add a resource to your application
-The application template uses AWS Serverless Application Model (AWS SAM) to define application resources. AWS SAM is an extension of AWS CloudFormation with a simpler syntax for configuring common serverless application resources such as functions, triggers, and APIs. For resources not included in [the SAM specification](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md), you can use standard [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) resource types.
-
-## Fetch, tail, and filter Lambda function logs
-
-To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs` lets you fetch logs generated by your deployed Lambda function from the command line. In addition to printing the logs on the terminal, this command has several nifty features to help you quickly find the bug.
-
-`NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
-
+![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/9ef97f95-21fc-4902-9f66-3b5a6a0d19c0)
+Então ele gerou a saida da execução do lambda para o out.txt.
+-Caso tenha executado com sucesso, verifique usando esse comando
+- Executando o Lambda e verificando se foi instalado corretamente:
 ```bash
-HelloWord$ sam logs -n HelloWorldFunction --stack-name HelloWord --tail
+notepad out.txt
 ```
+ o arquivo out.txt terá o seguinte conteúdo:
+ ![image](https://github.com/IrisRPerrorni/LambdaAWS/assets/133882090/c42cf235-a281-44c6-b848-45b56c0e2711)
 
-You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
+ {"statusCode":200,"headers":{"X-Custom-Header":"application/json","Content-Type":"application/json"},"body":"{ \"message\": \"hello world\" }"}
 
-## Unit tests
-
-Tests are defined in the `HelloWorldFunction/src/test` folder in this project.
-
-```bash
-HelloWord$ cd HelloWorldFunction
-HelloWorldFunction$ mvn test
-```
-
-## Cleanup
-
-To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
-
-```bash
-sam delete --stack-name HelloWord
-```
-
-## Resources
-
-See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
-
-Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
+## Fonte de estudo
+https://thomsdacosta.medium.com/java-aws-lambda-montando-um-ambiente-de-desenvolvimento-local-com-localstack-a845624bee40
